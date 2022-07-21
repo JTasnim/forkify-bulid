@@ -1,5 +1,5 @@
 //npm run start
-import * as model from './model.js';
+import * as model from './model.js'; // import all from model
 import { MODEL_CLOSE_SEC } from './config.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
@@ -9,10 +9,11 @@ import paginationView from './views/paginationView.js';
 import bookmarksView from './views/bookmarksView.js';
 import addRecipeView from './views/addRecipeView.js';
 
+//polyfill
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+
 import { async } from 'regenerator-runtime';
-import paginationView from './views/PaginationView.js';
 
 // https://forkify-api.herokuapp.com/v2
 
@@ -20,11 +21,12 @@ import paginationView from './views/PaginationView.js';
 
 //Ajax request to API
 
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
 const controlRecipes = async function () {
   try {
+    //id = hash
     const id = window.location.hash.slice(1);
     if (!id) {
       return;
